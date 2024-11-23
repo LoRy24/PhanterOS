@@ -43,6 +43,7 @@ clean:
 all: clean build_boot
 	@echo "Building os.bin..."
 	cat ./bin/boot.bin > ./bin/os.bin
+	dd if=./bin/os.bin of=./bin/os.img conv=notrunc
 	@echo "Built os.bin!"
 
 # ----------------------- #
