@@ -1,0 +1,8 @@
+# File dei software di sviluppo
+/.idea/
+/.vscode/
+
+# Output compilati
+./out/*.o
+./bin/*.bin
+./bin/*.img
