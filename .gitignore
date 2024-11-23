@@ -3,6 +3,6 @@
 /.vscode/
 
 # Output compilati
-./out/*.o
-./bin/*.bin
-./bin/*.img
+*.o
+*.bin
+*.img
