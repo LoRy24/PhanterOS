@@ -1,3 +1,4 @@
+# Configurazioni di docker
 DOCKER_IMAGE_NAME = "pantheros-env"
 DOCKER_CONTAINER_NAME = "pantheros-env-container"
 
