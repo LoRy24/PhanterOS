@@ -18,7 +18,7 @@
 # Messaggio di benvenuto
 #
 welcome_message:
-                        .asciz      "Benvenuto in PantherOS!\n\r"
+                        .asciz      "Benvenuto in PantherOS!\n\rBy Lorenzo Rocca\n\r"
 
 #
 # Sezione del codice
@@ -34,5 +34,8 @@ _boot:
                         mov         $welcome_message, %si       # Carica l'indirizzo della stringa in %si
                         call        print_string                # Scrivi la stringa in console
                         popa                                    # Ripristina lo stato iniziale dei registri
+
+                        mov         $0x0A, %cx                  # Carica il numero $0x0A in %cx
+                        call        print_num                   # Visualizza il numero a schermo
 
                         jmp         .                           # Resta all'indirizzo di memoria attuale

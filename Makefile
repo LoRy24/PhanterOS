@@ -33,6 +33,7 @@ clean:
 	rm -rf $(BOOT_FILES)
 	rm -rf ./bin/boot.bin
 	rm -rf ./bin/os.bin
+	rm -rf ./bin/os.img
 	@echo "Cleaned up!"
 
 # ----------------------- #
@@ -43,6 +44,7 @@ clean:
 all: clean build_boot
 	@echo "Building os.bin..."
 	cat ./bin/boot.bin > ./bin/os.bin
+	dd if=/dev/zero bs=512 count=10 >> ./bin/os.bin
 	dd if=./bin/os.bin of=./bin/os.img conv=notrunc
 	@echo "Built os.bin!"
 
@@ -52,9 +54,9 @@ all: clean build_boot
 
 # Esegue il sistema operativo
 run: 
-	@echo "Running os.bin..."
-	qemu-system-i386 -hda ./bin/os.bin
-	@echo "Ran os.bin!"
+	@echo "Running os.img..."
+	qemu-system-i386 -hda ./bin/os.img
+	@echo "Ran os.img!"
 
 # ----------------------- #
 #         Docker          #
