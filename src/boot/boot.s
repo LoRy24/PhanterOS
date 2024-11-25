@@ -35,7 +35,9 @@ _boot:
                         call        print_string                # Scrivi la stringa in console
                         popa                                    # Ripristina lo stato iniziale dei registri
 
+                        pusha                                   # Carica tutti i registri nello stack
                         mov         $0x0A, %cx                  # Carica il numero $0x0A in %cx
                         call        print_num                   # Visualizza il numero a schermo
+                        popa                                    # Ripristina lo stato iniziale dei registri
 
                         jmp         .                           # Resta all'indirizzo di memoria attuale
