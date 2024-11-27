@@ -44,7 +44,7 @@ clean:
 all: clean build_boot
 	@echo "Building os.bin..."
 	cat ./bin/boot.bin > ./bin/os.bin
-	dd if=/dev/zero bs=512 count=10 >> ./bin/os.bin
+	dd if=/dev/zero bs=512 count=210 >> ./bin/os.bin
 	dd if=./bin/os.bin of=./bin/os.img conv=notrunc
 	@echo "Built os.bin!"
 
