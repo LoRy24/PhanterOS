@@ -15,6 +15,7 @@
 .global                 print_char
 .global                 print_string
 .global                 print_num
+.global                 print_newline
 
 #
 # Sezione del codice
@@ -84,4 +85,18 @@ print_num.print_loop:
                         call        print_char                  # Scrivi il carattere a schermo
                         jmp         print_num.print_loop        # Riesegui la seconda routine
 print_num.end:
+                        ret                                     # Ritorna al programma chiamante
+
+#
+# Funzione per andare a capo
+#
+print_newline:
+                        pusha                                   # Carica tutti i registri in memoria
+
+                        movb        $'\n', %al                  # Carica il carattere newline in al
+                        call        print_char                  # Scrivilo
+                        movb        $'\r', %al                  # Carica il carattere per resettare la riga in al
+                        call        print_char                  # /
+
+                        popa                                    # Ripristina tutti i registri
                         ret                                     # Ritorna al programma chiamante

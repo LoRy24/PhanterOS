@@ -3,13 +3,19 @@
 # ----------------------- #
 
 # Files di utilità
-UTILITY_FILES = ./out/boot/utils/printing.o
+UTILITY_FILES = ./out/boot/utils/printing.o ./out/boot/utils/disk.o
 
 # Compila il file printing.o
 ./out/boot/utils/printing.o: ./src/boot/utils/printing.s
 	@echo "Compiling printing.s..."
 	as --32 -o ./out/boot/utils/printing.o ./src/boot/utils/printing.s
 	@echo "Compiled printing.s!"
+
+# Compila il file disks.o
+./out/boot/utils/disk.o: ./src/boot/utils/disk.s
+	@echo "Compiling disk.s..."
+	as --32 -o ./out/boot/utils/disk.o ./src/boot/utils/disk.s
+	@echo "Compiled disk.s!"
 
 # ----------------------- #
 #       Bootloader        #
@@ -39,9 +45,9 @@ build_boot: $(BOOT_FILES)
 EXTENDED_BOOT_FILES = $(UTILITY_FILES) ./out/boot/extended/extboot.o
 
 # Compila il file extboot.s
-./out/extended/extboot.o: ./src/boot/extended/extboot.s
+./out/boot/extended/extboot.o: ./src/boot/extended/extboot.s
 	@echo "Compiling extboot.s..."
-	as --32 -o ./out/extended/extboot.o ./src/boot/extended/extboot.s
+	as --32 -o ./out/boot/extended/extboot.o ./src/boot/extended/extboot.s
 	@echo "Compiled extboot.s!"
 
 # Compila l'extended bootloader
@@ -61,6 +67,7 @@ clean:
 	rm -rf $(EXTENDED_BOOT_FILES)
 	rm -rf ./bin/boot.bin
 	rm -rf ./bin/os.bin
+	rm -rf ./bin/extboot.bin
 	rm -rf ./bin/os.img
 	@echo "Cleaned up!"
 
@@ -72,7 +79,7 @@ clean:
 all: clean build_boot build_extended_boot
 	@echo "Building os.bin..."
 	cat ./bin/boot.bin > ./bin/os.bin
-	cat ./bin/extboot.bin > ./bin/os.bin
+	dd if=./bin/extboot.bin >> ./bin/os.bin
 	dd if=/dev/zero bs=512 count=4096 >> ./bin/os.bin
 	dd if=./bin/os.bin of=./bin/os.img conv=notrunc
 	@echo "Built os.bin!"
@@ -84,7 +91,7 @@ all: clean build_boot build_extended_boot
 # Esegue il sistema operativo
 run: 
 	@echo "Running os.img..."
-	qemu-system-i386 -hda ./bin/os.img
+	qemu-system-i386 -fda ./bin/os.img
 	@echo "Ran os.img!"
 
 # ----------------------- #
