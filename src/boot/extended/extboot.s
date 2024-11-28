@@ -41,4 +41,4 @@ _main:
                         call        print_string                # Scrivi la stringa in console
                         popa                                    # Ripristina lo stato iniziale dei registri
 
-                        jmp         .
+                        jmp         .                           # Loop infinito

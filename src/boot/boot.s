@@ -72,8 +72,8 @@ fat_16_table:
                         .byte       0x00                        # Flag riservato
                         .byte       0x28                        # Firma
                         .long       0x00000000                  # ID volume
-                        .ascii      "PHANTEROSv1"               # Label del volume
-                        .ascii      "FAT16   "                  # Tipo di Filesystem
+                        .ascii      "PHANTEROSV1"               # Label del volume
+                        .ascii      "FAT12   "                  # Tipo di Filesystem
 
 #
 # Entry point del boot
