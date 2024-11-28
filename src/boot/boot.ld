@@ -26,16 +26,4 @@ SECTIONS {
     .sig : {
         SHORT(0xAA55)
     }
-
-    . = 0x7E00;
-
-    .fat_1 : {
-        *(.fat_1)
-    }
-
-    . = 0x8E00;
-
-    .fat_2 : {
-        *(.fat_1)
-    }
 }
