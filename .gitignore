@@ -6,3 +6,6 @@
 *.o
 *.bin
 *.img
+
+# Test compilazione
+/bin/test/
