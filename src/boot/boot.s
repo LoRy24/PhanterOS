@@ -54,7 +54,7 @@ fat_16_table:
                         .ascii      "PHANTOS "                  # Nome OEM (lo personalizzo perchè si)
                         .word       0x0200                      # Numero di bytes per settore (512)
                         .byte       0x01                        # Settori ogni cluster
-                        .word       0x0005                      # Settori riservati, in questo caso solo il boot-sector
+                        .word       0x0005                      # Settori riservati, in questo caso il bootloader
                         .byte       0x02                        # Numero di tabelle FAT
                         .word       0x0040                      # Numero di voci dei files massime
                         .word       0x0800                      # Totale dei settori: 2048 (1MB)

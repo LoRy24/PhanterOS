@@ -42,3 +42,15 @@ _main:
                         popa                                    # Ripristina lo stato iniziale dei registri
 
                         jmp         .                           # Loop infinito
+
+#
+# Sezione della cartella ROOT del filesystem
+#
+
+.section                .rootdir
+
+#
+# Info del volume
+#
+volume_info:
+                        

@@ -27,4 +27,40 @@ SECTIONS {
     .fillsect : {
         BYTE(0x00)
     }
+
+    /* Fine Bootloader (4 settori) */
+
+    .fat1 : {
+        *(.fat1)
+    }
+
+    . = 0x95FF;
+
+    .fat1_fill : {
+        BYTE(0x00)
+    }
+
+    /* Fine Fat 1 - 8 Settori */
+
+    .fat2 : {
+        *(.fat1)
+    }
+
+    . = 0xA5FF;
+
+    .fat2_fill : {
+        BYTE(0x00)
+    }
+
+    /* Fine Fat 2 - 8 Settori */
+
+    .rootdir : {
+        *(.rootdir)
+    }
+
+    . = 0xADFF;
+
+    .rootdir_fill : {
+        BYTE(0x00)
+    }
 }

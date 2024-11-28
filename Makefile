@@ -76,11 +76,12 @@ clean:
 # ----------------------- #
 
 # Compila tutto in un file os.bin
+# Indirizzo inizio dati: 3200 su disco
 all: clean build_boot build_extended_boot
 	@echo "Building os.bin..."
 	cat ./bin/boot.bin > ./bin/os.bin
 	dd if=./bin/extboot.bin >> ./bin/os.bin
-	dd if=/dev/zero bs=512 count=4096 >> ./bin/os.bin
+	dd if=/dev/zero bs=512 count=2048 >> ./bin/os.bin
 	dd if=./bin/os.bin of=./bin/os.img conv=notrunc
 	@echo "Built os.bin!"
 
