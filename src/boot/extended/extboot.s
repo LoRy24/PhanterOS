@@ -44,6 +44,28 @@ _main:
                         jmp         .                           # Loop infinito
 
 #
+# Sezione del primo FAT
+#
+
+.section                .fat1
+
+#
+# Tabella FAT1
+#
+fat1:
+
+#
+# Sezione del secondo FAT
+#
+
+.section                .fat2
+
+#
+# Tabella FAT2
+#
+fa2:
+
+#
 # Sezione della cartella ROOT del filesystem
 #
 
